@@ -19,8 +19,8 @@ __device__ void apply_force_gpu(particle_t &particle, particle_t &neighbor)
   double r2 = dx * dx + dy * dy;
   if( r2 > cutoff*cutoff )
       return;
-  r2 = fmax( r2, min_r*min_r );
-  //r2 = (r2 > min_r*min_r) ? r2 : min_r*min_r;
+  //r2 = fmax( r2, min_r*min_r );
+  r2 = (r2 > min_r*min_r) ? r2 : min_r*min_r;
   double r = sqrt( r2 );
 
   //

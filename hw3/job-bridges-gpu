@@ -3,9 +3,9 @@
 #SBATCH -J particle-gpu
 #SBATCH -o particle-gpu.stdout
 #SBATCH -n 1         
-#SBATCH -p GPU-shared
-#SBATCH --gres=gpu:1
+#SBATCH -p GPU
+#SBATCH --gres=gpu:v100-16:8
 #SBATCH -t 00:10:00
-
+source modules.sh
 ./gpu -n 2000 -o gpu.txt
 ./autocorrect -s gpu.txt
